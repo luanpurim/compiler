@@ -1,14 +1,12 @@
 package view;
 
+import net.miginfocom.swing.MigLayout;
+
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Set;
 import java.util.stream.Stream;
-
-import javax.swing.*;
-
-import net.miginfocom.swing.MigLayout;
 
 public class Compiler {
 
@@ -159,15 +157,18 @@ public class Compiler {
 
         /* Falta colocar a lógica de limpar as mensagens e as barras de status */
         NewAction newAction = new NewAction(textPane);
+        CopyAction copyAction = new CopyAction(textPane);
+        PasteAction pasteAction = new PasteAction(textPane);
+        CutAction cutAction = new CutAction(textPane);
 
         KeyboardFocusManager keyboardFocusManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         Stream.of(
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_N), newAction),
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_O), () -> System.out.println("OPEN")),
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_S), () -> System.out.println("SAVE")),
-                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_C), () -> System.out.println("COPY")),
-                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_V), () -> System.out.println("PASTE")),
-                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_X), () -> System.out.println("CUT")),
+                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_C), copyAction),
+                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_V), pasteAction),
+                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_X), cutAction),
                 new KeyboardAction(new Shortcut(KeyEvent.VK_F9), () -> System.out.println("COMPILE")),
                 new KeyboardAction(new Shortcut(KeyEvent.VK_F1), () -> System.out.println("ABOUT")))
                 .forEach(keyboardFocusManager::addKeyEventDispatcher);
