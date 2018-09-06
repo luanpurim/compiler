@@ -5,6 +5,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -155,23 +157,35 @@ public class Compiler {
                 new ShortcutBlock("control X", "preventCut")
         );
 
-        /* Falta colocar a lógica de limpar as mensagens e as barras de status */
         NewAction newAction = new NewAction(textPane);
+        OpenAction openAction = new OpenAction();
+        SaveAction saveAction = new SaveAction();
         CopyAction copyAction = new CopyAction(textPane);
         PasteAction pasteAction = new PasteAction(textPane);
         CutAction cutAction = new CutAction(textPane);
+        CompileAction compileAction = new CompileAction();
+        AboutAction aboutAction = new AboutAction();
+
+        btnNew.addMouseListener(new MouseAction(newAction));
+        btnOpen.addMouseListener(new MouseAction(openAction));
+        btnSave.addMouseListener(new MouseAction(saveAction));
+        btnCopy.addMouseListener(new MouseAction(copyAction));
+        btnPaste.addMouseListener(new MouseAction(pasteAction));
+        btnCut.addMouseListener(new MouseAction(cutAction));
+        btnCompile.addMouseListener(new MouseAction(compileAction));
+        btnAbout.addMouseListener(new MouseAction(aboutAction));
 
         KeyboardFocusManager keyboardFocusManager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         Stream.of(
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_N), newAction),
-                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_O), () -> System.out.println("OPEN")),
-                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_S), () -> System.out.println("SAVE")),
+                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_O), openAction),
+                new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_S), saveAction),
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_C), copyAction),
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_V), pasteAction),
                 new KeyboardAction(new Shortcut(Set.of(KeyEvent.CTRL_DOWN_MASK), KeyEvent.VK_X), cutAction),
-                new KeyboardAction(new Shortcut(KeyEvent.VK_F9), () -> System.out.println("COMPILE")),
-                new KeyboardAction(new Shortcut(KeyEvent.VK_F1), () -> System.out.println("ABOUT")))
-                .forEach(keyboardFocusManager::addKeyEventDispatcher);
+                new KeyboardAction(new Shortcut(KeyEvent.VK_F9), compileAction),
+                new KeyboardAction(new Shortcut(KeyEvent.VK_F1), aboutAction)
+        ).forEach(keyboardFocusManager::addKeyEventDispatcher);
     }
 
 }
