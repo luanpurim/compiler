@@ -2,18 +2,18 @@ package view;
 
 import java.awt.event.KeyEvent;
 import java.util.Collections;
-import java.util.Set;
+import java.util.List;
 
 public class Shortcut {
 
-    private Set<Integer> modifiers;
+    private List<Integer> modifiers;
     private int key;
 
     public Shortcut(int key) {
-        this(Collections.emptySet(), key);
+        this(Collections.emptyList(), key);
     }
 
-    public Shortcut(Set<Integer> modifiers, int key) {
+    public Shortcut(List<Integer> modifiers, int key) {
         this.modifiers = modifiers;
         this.key = key;
     }
