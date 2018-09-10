@@ -22,6 +22,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 
 import net.miginfocom.swing.MigLayout;
+import utils.TextLineNumber;
+
+import java.awt.Color;
 
 public class Compiler {
 
@@ -59,13 +62,13 @@ public class Compiler {
         frame.setBackground(UIManager.getColor("Panel.background"));
         frame.getContentPane().setBackground(UIManager.getColor("OptionPane.background"));
         frame.setBounds(100, 100, 945, 744);
-        frame.setMinimumSize(new Dimension(900, 620));
+        frame.setMinimumSize(new Dimension(930, 670));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new MigLayout("", "[145px][10px][grow]", "[480px:n,grow][11px:11px:11px][105px:105px:105px][30px:30px:30px]"));
+        frame.getContentPane().setLayout(new MigLayout("gap rel 5", "[145px][grow]", "[480px:n,grow][105px:105px:105px][30px:30px:30px]"));
 
         JPanel toolBar = new JPanel();
         toolBar.setMaximumSize(new Dimension(160, Integer.MAX_VALUE));
-        frame.getContentPane().add(toolBar, "cell 0 0 1 3,grow");
+        frame.getContentPane().add(toolBar, "cell 0 0 1 2,grow");
         GridBagLayout gbl_toolBar = new GridBagLayout();
         gbl_toolBar.columnWidths = new int[] {150, 0};
         gbl_toolBar.rowHeights = new int[]{59, 59, 59, 59, 59, 59, 59, 59, 0};
@@ -144,41 +147,29 @@ public class Compiler {
         gbc_btnAbout.gridy = 7;
         toolBar.add(btnAbout, gbc_btnAbout);
 
-        JPanel editor = new JPanel();
-        frame.getContentPane().add(editor, "cell 2 0,grow,aligny top");
-        editor.setLayout(new MigLayout("", "[750px:n,grow,fill]", "[480px:n,grow,fill]"));
-
         JTextPane textPane = new JTextPane();
         JScrollPane scrollPane = new JScrollPane(textPane);
+        scrollPane.setMinimumSize(new Dimension(750, 480));
+        frame.getContentPane().add(scrollPane, "cell 1 0,aligny top,grow");
         /**
          * Descomentar as proximas linhas para aparecer as linhas no editor
          */
 //		TextLineNumber tln = new TextLineNumber(textPane);
 //		scrollPane.setRowHeaderView( tln );
-        editor.add(scrollPane, "cell 0 0,grow");
-
-        JPanel messageBar = new JPanel();
-        messageBar.setMaximumSize(new Dimension(Integer.MAX_VALUE, 105));
-        frame.getContentPane().add(messageBar, "cell 2 2,grow");
-        messageBar.setLayout(new MigLayout("", "[750px]", "[91px]"));
         
         JTextPane textPaneMessage = new JTextPane();
         textPaneMessage.setEditable(false);
         JScrollPane scrollPane_Messages = new JScrollPane(textPaneMessage);
+        scrollPane_Messages.setMinimumSize(new Dimension(750, 105));
         scrollPane_Messages.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane_Messages.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        messageBar.add(scrollPane_Messages, "cell 0 0,grow");
-
-        JPanel statusBar = new JPanel();
-        statusBar.setBorder(null);
-        statusBar.setMaximumSize(new Dimension(Integer.MAX_VALUE, 25));
-        frame.getContentPane().add(statusBar, "cell 0 3 3 1,grow");
-        statusBar.setLayout(new MigLayout("", "[grow]", "[grow]"));
+        frame.getContentPane().add(scrollPane_Messages, "cell 1 1,grow");
         
         JTextPane textPaneStatus = new JTextPane();
         textPaneStatus.setBackground(SystemColor.menu);
         textPaneStatus.setEditable(false);
-        statusBar.add(textPaneStatus, "cell 0 0,grow");
+        textPaneStatus.setMaximumSize(new Dimension(Integer.MAX_VALUE, 25));
+        frame.getContentPane().add(textPaneStatus, "cell 0 2 2 1,grow");
 
         new TextShortcutBlocker(textPane).block(
                 new ShortcutBlock("control C", "preventCopy"),

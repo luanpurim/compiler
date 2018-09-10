@@ -25,7 +25,6 @@ public class SaveAction implements Action {
 		File file = Compiler.FILE;
 		String text = textPane.getText();
 		if(file == null) {
-			System.out.println("Arquivo  novo");
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.setFileFilter(new FileNameExtensionFilter("Arquivo de texto", "txt"));
 			fileChooser.setMultiSelectionEnabled(false);
