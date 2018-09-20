@@ -1,0 +1,78 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Compact
+Input = String
+#RegularDefinitions
+
+linha: "/" "/".*
+#Tokens
+//id
+
+
+identificador: _([A-Z]|((([A-Z][a-z0-9]+)|([a-z]+[0-9]*))+[A-Z]?))
+
+//palavra
+
+reservada: [a-z]+([A-Z][a-z]+)* 
+and = reservada: "and"
+array = reservada: "array"
+do = reservada: "do"
+exit = reservada: "exit"
+false = reservada: "false"
+if = reservada: "if"
+ifFalseDo = reservada: "ifFalseDo"
+ifTrueDo = reservada: "ifTrueDo"
+literal = reservada: "literal"
+logical = reservada: "logical"
+number= reservada: "number"
+not = reservada: "not"
+or = reservada: "or"
+read = reservada: "read"
+true = reservada: "true"
+write = reservada: "write"
+
+//constante numérica
+
+constante_numérica: [0-9]+(\.[0-9]+)?
+
+//constante caractere
+
+constante_caractere: '(\\n | \\t | \\s)'
+
+//constante literal
+
+constante_literal:  \"[^ \" \n \\]*\"
+
+//comentário de linha - olhar na especificação como ignorar comentário
+
+
+
+//simbolo especial
+
+":"
+","
+"["
+"]"
+"{"
+"}"
+"("
+")"
+":="
+"+"
+"-"
+"*"
+"/"
+"="
+"!="
+"<"
+"<="
+">"
+">="
+
+//ignorar caractere de formatação
+:[\t \n \s]
+:{linha}
