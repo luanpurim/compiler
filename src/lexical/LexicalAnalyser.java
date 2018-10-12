@@ -1,30 +1,13 @@
 package lexical;
 
+import gals.Constants;
 import gals.LexicalError;
 import gals.Lexico;
-import gals.ScannerConstants;
 import gals.Token;
-
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class LexicalAnalyser {
 
-    private final List<Integer> keywordsIds = new LinkedList<>();
-    {
-        for (int specialCasesValue : ScannerConstants.SPECIAL_CASES_VALUES) {
-            keywordsIds.add(specialCasesValue);
-        }
-    }
-
     public LexicalResult analyse(String code) {
-        List<String> keywords = Stream.of(ScannerConstants.SPECIAL_CASES_KEYS)
-                .map(String::toLowerCase)
-                .collect(Collectors.toList());
-
         int initialPosition = 0;
         int line = 1;
         LexicalResult result = new LexicalResult();
@@ -32,7 +15,7 @@ public class LexicalAnalyser {
         Token token;
         try {
             while ((token = lexicalAnalyser.nextToken()) != null) {
-                if (keywords.contains(token.getLexeme()) && !keywordsIds.contains(token.getId())) {
+                if (token.getId() == Constants.t_reservada) {
                     throw new LexicalError("palavra reservada inválida", token.getPosition());
                 }
                 line += countLines(code.substring(initialPosition, token.getPosition()));

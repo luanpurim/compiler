@@ -30,11 +30,11 @@ public class TokenTypeRecognizer {
         } else if (id == Constants.t_constante_caractere) {
             return "constante caractere";
         } else if (id == Constants.t_constante_literal) {
-            return "constante caractere";
+            return "constante literal";
         } else if (id >= 23 && id <= 41) {
-            return "caractere especial";
+            return "símbolo especial";
         } else if (id == Constants.t_reservada) {
-            return "palavra reservada desconhecida";
+            return "palavra reservada inválida";
         }
         return "unknown";
     }
