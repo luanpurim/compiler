@@ -3,16 +3,14 @@ GenerateScanner = true
 GenerateParser = false
 Language = Java
 ScannerName = Lexico
+Package = gals
 ScannerCaseSensitive = true
 ScannerTable = Compact
 Input = String
 #RegularDefinitions
-
 linha: "/" "/".*
 #Tokens
 //id
-
-
 identificador: _([A-Z]|((([A-Z][a-z0-9]+)|([a-z]+[0-9]*))+[A-Z]?))
 
 //palavra
@@ -35,9 +33,9 @@ read = reservada: "read"
 true = reservada: "true"
 write = reservada: "write"
 
-//constante numérica
+//constante numerica
 
-constante_numérica: [0-9]+(\.[0-9]+)?
+constante_numerica: [0-9]+(\.[0-9]+)?
 
 //constante caractere
 
@@ -47,8 +45,7 @@ constante_caractere: '(\\n | \\t | \\s)'
 
 constante_literal:  \"[^ \" \n \\]*\"
 
-//comentário de linha - olhar na especificação como ignorar comentário
-
+//comentario de linha - olhar na especificacao como ignorar coment�rio
 
 
 //simbolo especial
@@ -74,5 +71,5 @@ constante_literal:  \"[^ \" \n \\]*\"
 ">="
 
 //ignorar caractere de formatação
-:[\t \n \s]
+:[\t\n\s]
 :{linha}
