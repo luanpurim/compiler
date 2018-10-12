@@ -1,23 +1,26 @@
 package view;
 
+import lexical.LexicalAnalyser;
+import lexical.LexicalResult;
+
 import javax.swing.JTextPane;
 
 public class CompileAction implements Action {
 
+    private JTextPane code;
 	private JTextPane messages;
-	
-    public CompileAction(JTextPane messages) {
-		this.messages = messages;
-	}
 
-	@Override
+    public CompileAction(JTextPane code, JTextPane messages) {
+        this.code = code;
+        this.messages = messages;
+    }
+
+    @Override
     public void execute() {
-        String text = this.messages.getText();
-        if(!text.isEmpty()) {
-        	text = text + "\n";
-        }
-        text = text + "Compilação de programas ainda não foi implementada";
-        this.messages.setText(text);
+        LexicalResult result = new LexicalAnalyser().analyse(code.getText());
+        System.out.println(result.hasErrors());
+        System.out.println(result.getErrors());
+        System.out.println(result.getLog());
     }
 
 }

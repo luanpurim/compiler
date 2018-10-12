@@ -183,7 +183,7 @@ public class Compiler {
         CopyAction copyAction = new CopyAction(textPane);
         PasteAction pasteAction = new PasteAction(textPane);
         CutAction cutAction = new CutAction(textPane);
-        CompileAction compileAction = new CompileAction(textPaneMessage);
+        CompileAction compileAction = new CompileAction(textPane, textPaneMessage);
         AboutAction aboutAction = new AboutAction(textPaneMessage);
 
         btnNew.addMouseListener(new MouseAction(newAction));        

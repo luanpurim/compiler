@@ -23,7 +23,7 @@ public interface Constants extends ScannerConstants
     int t_read = 17;
     int t_true = 18;
     int t_write = 19;
-    int t_constante_numérica = 20;
+    int t_constante_numerica = 20;
     int t_constante_caractere = 21;
     int t_constante_literal = 22;
     int t_TOKEN_23 = 23; //":"
