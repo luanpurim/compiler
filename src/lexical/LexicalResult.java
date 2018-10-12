@@ -7,11 +7,12 @@ import java.util.List;
 
 public class LexicalResult {
 
-    private StringBuilder log = new StringBuilder();
+    private List<ProcessedToken> tokens = new LinkedList<>();
     private List<String> errors = new LinkedList<>();
+    private TokenTypeRecognizer typeRecognizer = new TokenTypeRecognizer();
 
-    public void tokenProcessed(Token token) {
-        log.append(token.getLexeme()).append("\n");
+    public void tokenProcessed(Token token, int line) {
+        tokens.add(new ProcessedToken(token.getLexeme(), line, typeRecognizer.getType(token)));
     }
 
     public void addError(String error) {
@@ -26,8 +27,8 @@ public class LexicalResult {
         return !errors.isEmpty();
     }
 
-    public String getLog() {
-        return log.toString();
+    public List<ProcessedToken> geTokens() {
+        return tokens;
     }
 
 }

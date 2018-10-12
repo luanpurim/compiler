@@ -19,7 +19,7 @@ public class AboutAction implements Action {
         text = text + "Membros do grupo: \n";
         text = text + "- Luan Carlos Purim (luancarlospurim@gmail.com) \n";
         text = text + "- Adriner Maranho de Andrade (adriner_andrade@hotmail.com) \n";
-    	text = text + "Repositório GitHub: https://github.com/Feenux/compiler";
+    	text = text + "Repositorio GitHub: https://github.com/Feenux/compiler";
         this.messages.setText(text);
     }
 

@@ -17,10 +17,10 @@ public class CompileAction implements Action {
 
     @Override
     public void execute() {
-        LexicalResult result = new LexicalAnalyser().analyse(code.getText());
+        LexicalResult result = new LexicalAnalyser().analyse(code.getText().replaceAll("\\r", ""));
         System.out.println(result.hasErrors());
         System.out.println(result.getErrors());
-        System.out.println(result.getLog());
+        result.geTokens().forEach(System.out::println);
     }
 
 }

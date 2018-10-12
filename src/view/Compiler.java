@@ -154,8 +154,8 @@ public class Compiler {
         /**
          * Descomentar as proximas linhas para aparecer as linhas no editor
          */
-//		TextLineNumber tln = new TextLineNumber(textPane);
-//		scrollPane.setRowHeaderView( tln );
+		TextLineNumber tln = new TextLineNumber(textPane);
+		scrollPane.setRowHeaderView( tln );
         
         JTextPane textPaneMessage = new JTextPane();
         textPaneMessage.setEditable(false);
