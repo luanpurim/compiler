@@ -31,6 +31,8 @@ public class LexicalErrorResolver {
                 char character = chars[i];
                 if (!isBreakCharacter(character)) {
                     uncognizedChar.append(character);
+                } else {
+                    break;
                 }
             }
             return String.format("Erro na linha %d - %s %s", line, uncognizedChar.toString(), message);
