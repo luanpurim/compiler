@@ -1,12 +1,15 @@
 #Options
 GenerateScanner = true
-GenerateParser = false
+GenerateParser = true
 Language = Java
 ScannerName = Lexico
+ParserName = Sintatico
+SemanticName = Semantico
 Package = gals
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = String
+Input = Stream
+Parser = LL
 #RegularDefinitions
 linha: "/" "/".*
 #Tokens
@@ -73,3 +76,61 @@ constante_literal:  \"[^ \" \n \\]*\"
 //ignorar caractere de formata√ß√£o
 :[\t\n\s]
 :{linha}
+#NonTerminals
+<program>
+<declaracao_variaveis_opt>
+<declaracao_variaveis>
+<variavel>
+<tipo>
+<tipo_simples>
+<array>
+<lista_identificadores>
+<lista_comandos_opt>
+<lista_comandos>
+<comando>
+<atribuicao>
+<identificador_complexo>
+<acesso_array>
+<entrada_dados>
+<lista_identificadores_complexos>
+<saida_dados>
+<lista_expressoes>
+<selecao>
+<selecao_false>
+<repeticao>
+<expressao>
+<elemento>
+<relacional>
+<operador_relacional>
+<aritmetica>
+<termo>
+<fator>
+#Grammar
+<program> ::= <declaracao_variaveis_opt> "{" <lista_comandos_opt> "}";
+<declaracao_variaveis_opt> ::= Ó | <declaracao_variaveis>;
+<declaracao_variaveis> ::= <variavel> | <variavel> "," <declaracao_variaveis>;
+<variavel> ::= <tipo> ":" <lista_identificadores>;
+<tipo> ::= <tipo_simples> | <array>;
+<tipo_simples> ::= number | logical | literal;
+<array> ::= array "[" <tipo_simples> "," constante_numerica "]";
+<lista_identificadores> ::= identificador | identificador "," <lista_identificadores>;
+<lista_comandos_opt> ::= Ó | <lista_comandos>;
+<lista_comandos> ::= <comando> | <comando> <lista_comandos>;
+<comando> ::= <atribuicao> | <entrada_dados> | <saida_dados> | <selecao> | <repeticao>;
+<atribuicao> ::= <identificador_complexo> ":=" <expressao>;
+<identificador_complexo> ::= identificador <acesso_array>;
+<acesso_array> ::= Ó | "[" <expressao> "]";
+<entrada_dados> ::= read "(" <lista_identificadores_complexos> ")";
+<lista_identificadores_complexos> ::= <identificador_complexo> | <identificador_complexo> "," <lista_identificadores_complexos>;
+<saida_dados> ::= write "(" <lista_expressoes> ")";
+<lista_expressoes> ::= <expressao> | <expressao> "," <lista_expressoes>;
+<selecao> ::= "(" <expressao> ")" ifTrueDo "{" <lista_comandos_opt> "}" <selecao_false>;
+<selecao_false> ::= Ó | ifFalseDo "{" <lista_comandos_opt> "}";
+<repeticao> ::= do "{" <lista_comandos_opt> if "(" <expressao> ")" exit <lista_comandos_opt> "}";
+<expressao> ::= <expressao> and <elemento> | <expressao> or <elemento> | <elemento>;
+<elemento> ::= <relacional> | true | false | not <elemento>;
+<relacional> ::= <aritmetica> <operador_relacional> <aritmetica> | <aritmetica>;
+<operador_relacional> ::= "=" | "!=" | "<" | "<=" | ">" | ">=";
+<aritmetica> ::= <aritmetica> "+" <termo> | <aritmetica> "-" <termo> | <termo>;
+<termo> ::= <termo> "*" <fator> | <termo> "/" <fator> | <fator>;
+<fator> ::= identificador | identificador "[" <expressao> "]" | constante_numerica | constante_caractere | constante_literal | "(" <expressao> ")" | "+" <fator> | "-" <fator>;
