@@ -80,21 +80,26 @@ constante_literal:  \"[^ \" \n \\]*\"
 <program>
 <declaracao_variaveis_opt>
 <declaracao_variaveis>
+<declaracao_variaveis_1>
 <variavel>
 <tipo>
 <tipo_simples>
 <array>
 <lista_identificadores>
+<lista_identificadores_1>
 <lista_comandos_opt>
 <lista_comandos>
+<lista_comandos_1>
 <comando>
 <atribuicao>
 <identificador_complexo>
 <acesso_array>
 <entrada_dados>
 <lista_identificadores_complexos>
+<lista_identificadores_complexos_1>
 <saida_dados>
 <lista_expressoes>
+<lista_expressoes_1>
 <selecao>
 <selecao_false>
 <repeticao>
@@ -102,41 +107,50 @@ constante_literal:  \"[^ \" \n \\]*\"
 <expressao_1>
 <elemento>
 <relacional>
+<relacional_1>
 <operador_relacional>
 <aritmetica>
 <aritmetica_1>
 <termo>
 <termo_1>
 <fator>
+<fator_1>
 #Grammar
 <program> ::= <declaracao_variaveis_opt> "{" <lista_comandos_opt> "}";
 <declaracao_variaveis_opt> ::= î | <declaracao_variaveis>;
-<declaracao_variaveis> ::= <variavel> | <variavel> "," <declaracao_variaveis>;
+<declaracao_variaveis> ::= <variavel> <declaracao_variaveis_1>;
+<declaracao_variaveis_1> ::= î | "," <declaracao_variaveis>;
 <variavel> ::= <tipo> ":" <lista_identificadores>;
 <tipo> ::= <tipo_simples> | <array>;
 <tipo_simples> ::= number | logical | literal;
 <array> ::= array "[" <tipo_simples> "," constante_numerica "]";
-<lista_identificadores> ::= identificador | identificador "," <lista_identificadores>;
+<lista_identificadores> ::= identificador <lista_identificadores_1>;
+<lista_identificadores_1> ::= î | "," <lista_identificadores>;
 <lista_comandos_opt> ::= î | <lista_comandos>;
-<lista_comandos> ::= <comando> | <comando> <lista_comandos>;
+<lista_comandos> ::= <comando> <lista_comandos_1>;
+<lista_comandos_1> ::= î | <lista_comandos>;
 <comando> ::= <atribuicao> | <entrada_dados> | <saida_dados> | <selecao> | <repeticao>;
 <atribuicao> ::= <identificador_complexo> ":=" <expressao>;
 <identificador_complexo> ::= identificador <acesso_array>;
 <acesso_array> ::= î | "[" <expressao> "]";
 <entrada_dados> ::= read "(" <lista_identificadores_complexos> ")";
-<lista_identificadores_complexos> ::= <identificador_complexo> | <identificador_complexo> "," <lista_identificadores_complexos>;
+<lista_identificadores_complexos> ::= <identificador_complexo> <lista_identificadores_complexos_1>;
+<lista_identificadores_complexos_1> ::= î | "," <lista_identificadores_complexos>;
 <saida_dados> ::= write "(" <lista_expressoes> ")";
-<lista_expressoes> ::= <expressao> | <expressao> "," <lista_expressoes>;
+<lista_expressoes> ::= <expressao> <lista_expressoes_1>;
+<lista_expressoes_1> ::= î | "," <lista_expressoes>;
 <selecao> ::= "(" <expressao> ")" ifTrueDo "{" <lista_comandos_opt> "}" <selecao_false>;
 <selecao_false> ::= î | ifFalseDo "{" <lista_comandos_opt> "}";
 <repeticao> ::= do "{" <lista_comandos_opt> if "(" <expressao> ")" exit <lista_comandos_opt> "}";
 <expressao> ::= <elemento> <expressao_1>;
 <expressao_1> ::= î | and <elemento> <expressao_1> | or <elemento><expressao_1>;
 <elemento> ::= <relacional> | true | false | not <elemento>;
-<relacional> ::= <aritmetica> <operador_relacional> <aritmetica> | <aritmetica>;
+<relacional> ::= <aritmetica> <relacional_1>;
+<relacional_1> ::= î | <operador_relacional> <aritmetica>;
 <operador_relacional> ::= "=" | "!=" | "<" | "<=" | ">" | ">=";
 <aritmetica> ::= <termo> <aritmetica_1>;
 <aritmetica_1> ::= î | "+" <termo> <aritmetica_1> | "-" <termo> <aritmetica_1>;
 <termo> ::= <fator> <termo_1>;
 <termo_1> ::= î | "*" <fator> <termo_1> | "/" <fator> <termo_1>;
-<fator> ::= identificador | identificador "[" <expressao> "]" | constante_numerica | constante_caractere | constante_literal | "(" <expressao> ")" | "+" <fator> | "-" <fator>;
+<fator> ::= identificador <fator_1>  | constante_numerica | constante_caractere | constante_literal | "(" <expressao> ")" | "+" <fator> | "-" <fator>;
+<fator_1> ::= î | "[" <expressao> "]";
