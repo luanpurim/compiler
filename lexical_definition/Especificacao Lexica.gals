@@ -99,11 +99,14 @@ constante_literal:  \"[^ \" \n \\]*\"
 <selecao_false>
 <repeticao>
 <expressao>
+<expressao_1>
 <elemento>
 <relacional>
 <operador_relacional>
 <aritmetica>
+<aritmetica_1>
 <termo>
+<termo_1>
 <fator>
 #Grammar
 <program> ::= <declaracao_variaveis_opt> "{" <lista_comandos_opt> "}";
@@ -127,10 +130,13 @@ constante_literal:  \"[^ \" \n \\]*\"
 <selecao> ::= "(" <expressao> ")" ifTrueDo "{" <lista_comandos_opt> "}" <selecao_false>;
 <selecao_false> ::= î | ifFalseDo "{" <lista_comandos_opt> "}";
 <repeticao> ::= do "{" <lista_comandos_opt> if "(" <expressao> ")" exit <lista_comandos_opt> "}";
-<expressao> ::= <expressao> and <elemento> | <expressao> or <elemento> | <elemento>;
+<expressao> ::= <elemento> <expressao_1>;
+<expressao_1> ::= î | and <elemento> <expressao_1> | or <elemento><expressao_1>;
 <elemento> ::= <relacional> | true | false | not <elemento>;
 <relacional> ::= <aritmetica> <operador_relacional> <aritmetica> | <aritmetica>;
 <operador_relacional> ::= "=" | "!=" | "<" | "<=" | ">" | ">=";
-<aritmetica> ::= <aritmetica> "+" <termo> | <aritmetica> "-" <termo> | <termo>;
-<termo> ::= <termo> "*" <fator> | <termo> "/" <fator> | <fator>;
+<aritmetica> ::= <termo> <aritmetica_1>;
+<aritmetica_1> ::= î | "+" <termo> <aritmetica_1> | "-" <termo> <aritmetica_1>;
+<termo> ::= <fator> <termo_1>;
+<termo_1> ::= î | "*" <fator> <termo_1> | "/" <fator> <termo_1>;
 <fator> ::= identificador | identificador "[" <expressao> "]" | constante_numerica | constante_caractere | constante_literal | "(" <expressao> ")" | "+" <fator> | "-" <fator>;
