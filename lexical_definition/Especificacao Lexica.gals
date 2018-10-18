@@ -119,7 +119,7 @@ constante_literal:  \"[^ \" \n \\]*\"
 <program> ::= <declaracao_variaveis_opt> "{" <lista_comandos_opt> "}";
 <declaracao_variaveis_opt> ::= î | <declaracao_variaveis>;
 <declaracao_variaveis> ::= <variavel> <declaracao_variaveis_1>;
-<declaracao_variaveis_1> ::= î | "," <declaracao_variaveis>;
+<declaracao_variaveis_1> ::= î | <declaracao_variaveis>;
 <variavel> ::= <tipo> ":" <lista_identificadores>;
 <tipo> ::= <tipo_simples> | <array>;
 <tipo_simples> ::= number | logical | literal;
@@ -154,3 +154,4 @@ constante_literal:  \"[^ \" \n \\]*\"
 <termo_1> ::= î | "*" <fator> <termo_1> | "/" <fator> <termo_1>;
 <fator> ::= identificador <fator_1>  | constante_numerica | constante_caractere | constante_literal | "(" <expressao> ")" | "+" <fator> | "-" <fator>;
 <fator_1> ::= î | "[" <expressao> "]";
+
