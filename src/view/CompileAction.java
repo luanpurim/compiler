@@ -1,7 +1,6 @@
 package view;
 
-import lexical.LexicalAnalyser;
-import lexical.LexicalResult;
+import core.Analyser;
 
 import java.util.stream.Collectors;
 
@@ -19,7 +18,7 @@ public class CompileAction implements Action {
 
     @Override
     public void execute() {
-        LexicalResult result = new LexicalAnalyser().analyse(code.getText().replaceAll("\\r", ""));
+        LexicalResult result = new Analyser().analyse(code.getText().replaceAll("\\r", ""));
         if(result.hasErrors()) {
         	String text = result.getErrors().stream().map(error -> error + "\n").collect(Collectors.joining(""));
         	this.messages.setText(text);
