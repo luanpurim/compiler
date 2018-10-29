@@ -20,10 +20,10 @@ public class Analyser {
             doAnalysis(code);
         } catch (LexicalError lexicalError) {
             return new LexicalErrorResolver(code, lexicalError);
-        } catch (SemanticError semanticError) {
-            new SemanticErrorResolver(code, semanticError);
         } catch (SyntaticError syntaticError) {
-            new SyntaticErrorResolver(code, syntaticError);
+            return new SyntaticErrorResolver(code, syntaticError);
+        } catch (SemanticError semanticError) {
+            return new SemanticErrorResolver(code, semanticError);
         }
         return null;
     }
