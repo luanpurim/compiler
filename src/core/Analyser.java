@@ -36,13 +36,8 @@ public class Analyser {
         try {
             syntatic.parse(lexical, semantic);
         } catch (SyntaticError syntaticError) {
-            Optional<LexicalError> lexicalError = new ErrorTokenIdentifier(code, syntaticError.getPosition())
-                    .identify()
-                    .filter(token -> token.getId() == Constants.t_reservada)
-                    .map(t -> new LexicalError("palavra reservada inválida", syntaticError.getPosition()));
-
-            if (lexicalError.isPresent()) {
-                throw lexicalError.get();
+            if (syntaticError.getToken().getId() == Constants.t_reservada) {
+                throw new LexicalError("palavra reservada inválida", syntaticError.getPosition());
             }
             throw syntaticError;
         }

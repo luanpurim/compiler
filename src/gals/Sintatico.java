@@ -58,7 +58,7 @@ public class Sintatico implements Constants
             }
             else
             {
-                throw new SyntaticError(PARSER_ERROR[x], currentToken.getPosition());
+                throw new SyntaticError(PARSER_ERROR[x], currentToken);
             }
         }
         else if (isNonTerminal(x))
@@ -66,7 +66,7 @@ public class Sintatico implements Constants
             if (pushProduction(x, a))
                 return false;
             else
-                throw new SyntaticError(PARSER_ERROR[x], currentToken.getPosition());
+                throw new SyntaticError(PARSER_ERROR[x], currentToken);
         }
         else // isSemanticAction(x)
         {
