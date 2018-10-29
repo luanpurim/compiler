@@ -81,7 +81,7 @@ public class Sintatico implements Constants
         if (p >= 0)
         {
             int[] production = PRODUCTIONS[p];
-            //empilha a produção em ordem reversa
+            //empilha a produÃ§Ã£o em ordem reversa
             for (int i=production.length-1; i>=0; i--)
             {
                 stack.push(new Integer(production[i]));
