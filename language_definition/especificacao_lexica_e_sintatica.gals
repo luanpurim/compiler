@@ -8,7 +8,7 @@ SemanticName = Semantico
 Package = gals
 ScannerCaseSensitive = true
 ScannerTable = Compact
-Input = Stream
+Input = String
 Parser = LL
 #RegularDefinitions
 linha: "/" "/".*
@@ -120,7 +120,7 @@ constante_literal:  \"[^ \" \n \\]*\"
 <declaracao_variaveis_opt> ::= î | <declaracao_variaveis>;
 <declaracao_variaveis> ::= <variavel> <declaracao_variaveis_1>;
 <declaracao_variaveis_1> ::= î | <declaracao_variaveis>;
-<variavel> ::= <tipo>#101 ":" <lista_identificadores> #103;
+<variavel> ::= <tipo> #101 ":" <lista_identificadores> #103;
 <tipo> ::= <tipo_simples> | <array>;
 <tipo_simples> ::= number | logical | literal;
 <array> ::= array "[" <tipo_simples> "," constante_numerica "]";
