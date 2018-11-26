@@ -198,7 +198,7 @@ public interface ParserConstants
 	     "esperado , )",// "<lista_expressoes_1> inválido",
 	     "esperado (", // "<selecao> inválido",
 	     "esperado identificador do if ifFalseDo read write } (",// "<selecao_false> inválido",
-	     "esperado array",// "<repeticao> inválido",
+	     "esperado do",// "<repeticao> inválido",
 	     "esperado expressao",// "<expressao> inválido",
 	     "esperado expressao",// "<expressao_1> inválido",
 	     "esperado expressao",// "<elemento> inválido",
