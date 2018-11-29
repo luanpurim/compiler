@@ -2,6 +2,7 @@ package semantic.actions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public final class SemanticActions {
 
@@ -11,8 +12,8 @@ public final class SemanticActions {
         // register(new SumAction);
     }
 
-    public static SemanticActionHandler get(int id) {
-        return actions.get(id);
+    public static Optional<SemanticActionHandler> get(int id) {
+        return Optional.ofNullable(actions.get(id));
     }
 
     private static void register(SemanticActionHandler actionHandler) {
