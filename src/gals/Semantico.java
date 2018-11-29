@@ -14,8 +14,9 @@ public class Semantico implements Constants
     public void executeAction(int action, Token token) throws SemanticError
     {
         Optional<SemanticActionHandler> semanticActionHandler = SemanticActions.get(action);
-        semanticActionHandler.ifPresent(actionHandler -> actionHandler.handle(token, context));
-        if (!semanticActionHandler.isPresent()) {
+        if (semanticActionHandler.isPresent()) {
+            semanticActionHandler.get().handle(token, context);
+        } else {
             System.out.println(String.format("Ação %s não implementada. Token: %s", action, token));
         }
     }	
