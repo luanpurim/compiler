@@ -6,7 +6,7 @@ import semantic.Context;
 import semantic.MsilCommand;
 import semantic.VarType;
 
-public class NumberFoundAction implements SemanticActionHandler {
+public class PushNumber implements SemanticActionHandler {
 
     @Override
     public int id() {
@@ -18,4 +18,5 @@ public class NumberFoundAction implements SemanticActionHandler {
         context.getTypeQueue().add(VarType.NUMBER);
         context.getCode().add(MsilCommand.PUSH_NUMBER, token.getLexeme());
     }
+
 }
