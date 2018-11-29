@@ -1,17 +1,17 @@
 package semantic;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class Variables {
 
-    private Map<String, Object> variables = new HashMap<>();
+    private Map<Variable, Object> variables = new EnumMap<>(Variable.class);
 
-    public void put(String variable, Object value) {
+    public void set(Variable variable, Object value) {
         this.variables.put(variable, value);
     }
 
-    public <T> T get(String variable) {
+    public <T> T get(Variable variable) {
         return (T) this.variables.get(variable);
     }
 

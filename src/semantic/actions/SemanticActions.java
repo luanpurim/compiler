@@ -16,6 +16,7 @@ public final class SemanticActions {
         register(new PushNumber()); // #6
         register(new PushTrue()); // #11
         register(new PushFalse()); // #12
+        register(new Not()); // #13
     }
 
     public static Optional<SemanticActionHandler> get(int id) {

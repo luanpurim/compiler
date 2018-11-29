@@ -8,6 +8,7 @@ public enum MsilCommand {
     MUL("mul"),
     PUSH_NUMBER("ldc.r8 %s"),
     PUSH_LOGICAL("ldc.i4.%s"),
+    XOR("xor"),
     READ_LINE("call string [mscorlib]System.Console::ReadLine()");
 
     MsilCommand(String code) {
