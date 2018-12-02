@@ -3,18 +3,18 @@ package semantic.actions;
 import gals.SemanticError;
 import gals.Token;
 import semantic.Context;
-import semantic.Variable;
 
-public class RelationalDeclaration implements SemanticActionHandler{
+public class Action102 implements SemanticActionHandler{
 
 	@Override
 	public int id() {
-		return 9;
+		// TODO Auto-generated method stub
+		return 102;
 	}
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		context.getVariables().set(Variable.RELATIONAL_OPERATOR, token.getLexeme());
+		context.getIdentifiersList().add(token.getLexeme());
 	}
 
 }
