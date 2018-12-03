@@ -2,18 +2,24 @@ package semantic;
 
 public enum VarType {
 
-    NUMBER("float64"),
-    LITERAL("bool"),
-    LOGICAL("string");
-
-    VarType(String msilType) {
-        this.msilType = msilType;
-    }
+    NUMBER("float64", "Double"),
+    LITERAL("string", ""),
+    LOGICAL("bool", "");
 
     private String msilType;
+    private String className;
 
-    private String msilType() {
+    VarType(String msilType, String className) {
+        this.msilType = msilType;
+        this.className = className;
+    }
+
+    public String msilType() {
         return msilType;
+    }
+
+    public String getClassName() {
+        return className;
     }
 
 }

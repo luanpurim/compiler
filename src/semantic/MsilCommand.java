@@ -13,7 +13,9 @@ public enum MsilCommand {
     LESS_THAN("clt"),
     EQUALS("ceq"),
     LOCALS(".locals(%s %s)"),
-    READ_LINE("call string [mscorlib]System.Console::ReadLine()");
+    SAVE_VAR("stloc %s"),
+    READ_LINE("call string [mscorlib]System.Console::ReadLine()"),
+    PARSE_STRING("call %s [mscorlib]System.%s::Parse(string)");
 
     MsilCommand(String code) {
         this.code = code;
