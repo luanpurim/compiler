@@ -6,10 +6,10 @@ public class Context {
 
     private Map<String, VarType> symbolTable = new HashMap<>();
     private Queue<VarType> typeQueue = new LinkedList<>();
-    private List<String> identifiersList = new LinkedList<>();
+    private LinkedList<String> identifiersList = new LinkedList<>();
     private Code code = new Code();
     private Variables variables = new Variables();
-    private LabelManager labelManager = new LabelManager();
+    private Queue<String> labelQueue = new LinkedList<>();
 
     public Map<String, VarType> getSymbolTable() {
         return symbolTable;
@@ -27,12 +27,12 @@ public class Context {
         return variables;
     }
 
-    public List<String> getIdentifiersList() {
+    public LinkedList<String> getIdentifiersList() {
         return identifiersList;
     }
 
-    public LabelManager getLabelManager() {
-        return labelManager;
+    public Queue<String> getLabelQueue() {
+        return labelQueue;
     }
 
 }
