@@ -24,7 +24,7 @@ public class Action106 implements SemanticActionHandler{
 		if(type!=typeExp) {
 			throw new SemanticError("Erro 106 - 2");
 		}
-		context.getCode().add(MsilCommand.DIV, id);
+		context.getCode().add(MsilCommand.SAVE_VAR, id);
 	}
 
 }
