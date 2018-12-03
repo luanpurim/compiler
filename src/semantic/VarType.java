@@ -3,8 +3,8 @@ package semantic;
 public enum VarType {
 
     NUMBER("float64", "Double"),
-    LITERAL("string", ""),
-    LOGICAL("bool", "");
+    LITERAL("string", "String"),
+    LOGICAL("bool", "Boolean");
 
     private String msilType;
     private String className;
