@@ -9,6 +9,7 @@ public class Context {
     private List<String> identifiersList = new LinkedList<>();
     private Code code = new Code();
     private Variables variables = new Variables();
+    private LabelManager labelManager = new LabelManager();
 
     public Map<String, VarType> getSymbolTable() {
         return symbolTable;
@@ -28,6 +29,10 @@ public class Context {
 
     public List<String> getIdentifiersList() {
         return identifiersList;
+    }
+
+    public LabelManager getLabelManager() {
+        return labelManager;
     }
 
 }
