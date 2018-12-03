@@ -6,7 +6,7 @@ import semantic.Context;
 import semantic.MsilCommand;
 import semantic.VarType;
 
-public class Action8 implements SemanticActionHandler {
+public class Action008 implements SemanticActionHandler {
 
     @Override
     public int id() {

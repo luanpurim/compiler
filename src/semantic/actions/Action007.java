@@ -5,7 +5,7 @@ import gals.Token;
 import semantic.Context;
 import semantic.VarType;
 
-public class Action7 implements SemanticActionHandler {
+public class Action007 implements SemanticActionHandler {
 
     @Override
     public int id() {

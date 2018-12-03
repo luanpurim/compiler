@@ -6,17 +6,17 @@ import semantic.Context;
 import semantic.MsilCommand;
 import semantic.VarType;
 
-public class Action12 implements SemanticActionHandler {
+public class Action011 implements SemanticActionHandler {
 
     @Override
     public int id() {
-        return 12;
+        return 11;
     }
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
         context.getTypeQueue().add(VarType.LOGICAL);
-        context.getCode().add(MsilCommand.PUSH_LOGICAL, 0);
+        context.getCode().add(MsilCommand.PUSH_LOGICAL, 1);
     }
 
 }

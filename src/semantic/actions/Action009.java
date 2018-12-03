@@ -3,18 +3,18 @@ package semantic.actions;
 import gals.SemanticError;
 import gals.Token;
 import semantic.Context;
-import semantic.MsilCommand;
+import semantic.Variable;
 
-public class Action16 implements SemanticActionHandler {
+public class Action009 implements SemanticActionHandler{
 
 	@Override
 	public int id() {
-		return 16;
+		return 9;
 	}
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		context.getCode().add(MsilCommand.PROGRAM_TAIL);
+		context.getVariables().set(Variable.RELATIONAL_OPERATOR, token.getLexeme());
 	}
 
 }

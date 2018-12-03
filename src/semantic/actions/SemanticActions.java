@@ -9,14 +9,14 @@ public final class SemanticActions {
     private static Map<Integer, SemanticActionHandler> actions = new HashMap<>();
 
     static {
-        register(new Action1());
-        register(new Action2());
-        register(new Action3());
-        register(new Action4());
-        register(new Action6());
-        register(new Action11());
-        register(new Action12());
-        register(new Action13());
+        register(new Action001());
+        register(new Action002());
+        register(new Action003());
+        register(new Action004());
+        register(new Action006());
+        register(new Action011());
+        register(new Action012());
+        register(new Action013());
     }
 
     public static Optional<SemanticActionHandler> get(int id) {

@@ -6,11 +6,11 @@ import semantic.Context;
 import semantic.MsilCommand;
 import semantic.VarType;
 
-public class Action4 implements SemanticActionHandler {
+public class Action003 implements SemanticActionHandler {
 
     @Override
     public int id() {
-        return 4;
+        return 3;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Action4 implements SemanticActionHandler {
             throw new SemanticError("Mensagem de erro de multiplicação");
         }
         context.getTypeQueue().add(VarType.NUMBER);
-        context.getCode().add(MsilCommand.DIV);
+        context.getCode().add(MsilCommand.MUL);
     }
 
 }
