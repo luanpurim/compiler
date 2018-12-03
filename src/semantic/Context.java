@@ -9,7 +9,7 @@ public class Context {
     private LinkedList<String> identifiersList = new LinkedList<>();
     private Code code = new Code();
     private Variables variables = new Variables();
-    private Queue<String> labelQueue = new LinkedList<>();
+    private LabelManager labelManager = new LabelManager();
 
     public Map<String, VarType> getSymbolTable() {
         return symbolTable;
@@ -31,8 +31,8 @@ public class Context {
         return identifiersList;
     }
 
-    public Queue<String> getLabelQueue() {
-        return labelQueue;
+    public LabelManager getLabelManager() {
+        return labelManager;
     }
 
 }
