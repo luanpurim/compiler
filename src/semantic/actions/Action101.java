@@ -3,6 +3,8 @@ package semantic.actions;
 import gals.SemanticError;
 import gals.Token;
 import semantic.Context;
+import semantic.VarType;
+import semantic.Variable;
 
 public class Action101 implements SemanticActionHandler{
 
@@ -13,7 +15,7 @@ public class Action101 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		// TODO: Implementar porra :), usar  a variavel Variable.TYPE_DECLARATION
+		context.getVariables().set(Variable.VAR_TYPE, VarType.NUMBER);
 	}
 
 }
