@@ -10,6 +10,7 @@ public enum MsilCommand {
     PUSH_LOGICAL("ldc.i4.%s"),
     XOR("xor"),
     GREATER_THAN("cgt"),
+    READ_VAR("ldloc %s"),
     LESS_THAN("clt"),
     EQUALS("ceq"),
     LOCALS(".locals(%s %s)"),

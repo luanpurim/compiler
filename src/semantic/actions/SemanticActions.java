@@ -13,7 +13,7 @@ public final class SemanticActions {
         register(new Action2());
         register(new Action3());
         register(new Action4());
-        register(new Action5());
+        register(new Action6());
         register(new Action11());
         register(new Action12());
         register(new Action13());
