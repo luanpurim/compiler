@@ -6,7 +6,7 @@ import semantic.Context;
 import semantic.MsilCommand;
 import semantic.VarType;
 
-public class PushNumber implements SemanticActionHandler {
+public class Action5 implements SemanticActionHandler {
 
     @Override
     public int id() {
