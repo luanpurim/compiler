@@ -19,7 +19,7 @@ public class Action107 implements SemanticActionHandler {
             throw new SemanticError("Tipo não é um booleano");
         }
         context.getTypeQueue().add(VarType.LOGICAL);
-        context.getLabelManager().pushNew();
+        context.getLabelManager().pushNew()
         context.getCode().add();
     }
 }
