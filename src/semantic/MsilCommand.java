@@ -6,6 +6,8 @@ public enum MsilCommand {
     SUB("sub"),
     DIV("div"),
     MUL("mul"),
+    AND("and"),
+    OR("or"),
     PUSH_NUMBER("ldc.r8 %s"),
     PUSH_LOGICAL("ldc.i4.%s"),
     XOR("xor"),
