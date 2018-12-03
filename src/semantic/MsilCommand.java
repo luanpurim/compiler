@@ -10,6 +10,7 @@ public enum MsilCommand {
     OR("or"),
     PUSH_NUMBER("ldc.r8 %s"),
     PUSH_INTEGER("ldc.i8 %s"),
+    PUSH_LITERAL("ldstr \"%s\""),
     PUSH_LOGICAL("ldc.i4.%s"),
     CONVERT_TO_NUMBER("conv.r8"),
     XOR("xor"),
