@@ -15,7 +15,7 @@ public class Action106 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		String id = context.getIdentifiersList().get(0);
+		String id = context.getIdentifiersList().poll();
 		if(!context.getSymbolTable().containsKey(id)) {
 			throw new SemanticError("Erro 106");
 		}
