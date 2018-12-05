@@ -17,12 +17,12 @@ public class Action106 implements SemanticActionHandler{
 	public void handle(Token token, Context context) throws SemanticError {
 		String id = context.getIdentifiersList().poll();
 		if(!context.getSymbolTable().containsKey(id)) {
-			throw new SemanticError("Erro 106");
+			throw new SemanticError(String.format("Identificador '%s' não declarado", id));
 		}
 		VarType type = context.getSymbolTable().get(id);
 		VarType typeExp = context.getTypeQueue().poll();
 		if(type!=typeExp) {
-			throw new SemanticError("Erro 106 - 2");
+			throw new SemanticError("Tipo incompatível em comando de atribuição");
 		}
 		context.getCode().add(MsilCommand.SAVE_VAR, id);
 	}

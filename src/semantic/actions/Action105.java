@@ -17,7 +17,7 @@ public class Action105 implements SemanticActionHandler{
 	public void handle(Token token, Context context) throws SemanticError {
 		String id = token.getLexeme();
 		if(!context.getSymbolTable().containsKey(id)) {
-			throw new SemanticError("Erro semantico 105");
+			throw new SemanticError(String.format("Identificador '%s' não declarado", id));
 		}
 		VarType tipo = context.getSymbolTable().get(id);
 		context.getTypeQueue().add(tipo);

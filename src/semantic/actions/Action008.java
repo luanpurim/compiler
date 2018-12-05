@@ -17,7 +17,7 @@ public class Action008 implements SemanticActionHandler {
     public void handle(Token token, Context context) throws SemanticError {
         VarType type = context.getTypeQueue().poll();
         if (type != VarType.NUMBER) {
-            throw new SemanticError("Variável não é tipo");
+            throw new SemanticError("Tipo incompatível em operação aritmética unária");
         }
         context.getTypeQueue().add(type);
         context.getCode().add(MsilCommand.PUSH_INTEGER, -1);

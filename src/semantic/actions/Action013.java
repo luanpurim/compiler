@@ -17,7 +17,7 @@ public class Action013 implements SemanticActionHandler {
     public void handle(Token token, Context context) throws SemanticError {
         VarType type = context.getTypeQueue().poll();
         if (type != VarType.LOGICAL) {
-            throw new SemanticError("Mensagem de erro de boolean");
+            throw new SemanticError("Tipo incompatível em operação lógica unária");
         }
         context.getTypeQueue().add(VarType.LOGICAL);
         context.getCode().add(MsilCommand.PUSH_LOGICAL, 1);
