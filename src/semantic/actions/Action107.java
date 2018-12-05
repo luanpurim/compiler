@@ -3,6 +3,7 @@ package semantic.actions;
 import gals.SemanticError;
 import gals.Token;
 import semantic.Context;
+import semantic.MsilCommand;
 import semantic.VarType;
 
 public class Action107 implements SemanticActionHandler {
@@ -19,7 +20,7 @@ public class Action107 implements SemanticActionHandler {
             throw new SemanticError("Tipo não é um booleano");
         }
         context.getTypeQueue().add(VarType.LOGICAL);
-        context.getLabelManager().pushNew()
-        context.getCode().add();
+        String label = context.getLabelManager().pushNew();
+        context.getCode().add(MsilCommand.JUMP_FALSE, label);
     }
 }

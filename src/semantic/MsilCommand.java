@@ -45,6 +45,6 @@ public enum MsilCommand {
     private String code;
 
     public String get(Object... params) {
-        return String.format(code);
+        return String.format(code, params);
     }
 }
