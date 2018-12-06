@@ -12,8 +12,15 @@ public class ActionsTest {
         String code = CodeTestLoader.loadCode("001");
         AnalyseResult result = new Analyser().analyse(code);
         Assert.assertFalse(result.hasError());
-        System.out.println(result.getCode());
-        Assert.assertEquals("", result.getCode());
+        Assert.assertEquals(CodeTestLoader.loadCode("001_assert"), result.getCode());
+    }
+
+    @Test
+    public void testAction002() {
+        String code = CodeTestLoader.loadCode("002");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertFalse(result.hasError());
+        Assert.assertEquals(CodeTestLoader.loadCode("002_assert"), result.getCode());
     }
 
 }

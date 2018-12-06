@@ -6,19 +6,16 @@
 .method static public void _PRINCIPAL() {
 .entrypoint
 
-.locals(float64 _lado)
-.locals(float64 _area)
-ldstr "digite um valor para lado: "
-call void [mscorlib] System.Console::Write(string)
-call string [mscorlib] System.Console::ReadLine()
-call float64 [mscorlib] System.Double::Parse(string)
-stloc _lado
-ldloc _lado
-ldloc _lado
-mul
-stloc _area
-ldloc _area
+ldc.r8 3
 call void [mscorlib] System.Console::Write(float64)
+ldstr " "
+call void [mscorlib] System.Console::Write(string)
+ldc.r8 1.5
+call void [mscorlib] System.Console::Write(float64)
+ldstr "\t"
+call void [mscorlib] System.Console::Write(string)
+ldstr " ---> oi mundo!"
+call void [mscorlib]System.Console::Write(string)
 ret
 }
 }

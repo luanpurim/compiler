@@ -1,4 +1,7 @@
-number: _a, _b
+number: _lado, _area
 {
-    write(_a + _b)
+ write("digite um valor para lado: ")
+ read (_lado)
+ _area:= _lado * _lado
+ write(_area)
 }
