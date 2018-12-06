@@ -9,10 +9,7 @@ public class ActionsTest {
 
     @Test
     public void testAction001() {
-        String code = new StringBuilder()
-                .append("number: _a, _b { write(_a + _b) }")
-                .toString();
-
+        String code = CodeTestLoader.loadCode("001");
         AnalyseResult result = new Analyser().analyse(code);
         Assert.assertFalse(result.hasError());
         System.out.println(result.getCode());
