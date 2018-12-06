@@ -42,7 +42,13 @@ public class CompileAction implements Action {
     
     private void createFile(String code, File file){
     	try {
-    		String finalPath = file.getAbsolutePath().replaceAll("[.][^.]+$", ".il");
+    		String path = file.getAbsolutePath();
+    		String finalPath = "";
+    		if(path.indexOf(".") == -1) {
+    			finalPath = path + ".il"; 
+    		} else {    			
+    			finalPath = path.replaceAll("[.][^.]+$", ".il");
+    		}
     		FileWriter writer = new FileWriter(finalPath);
     		writer.write(code);
     		writer.close();    		
