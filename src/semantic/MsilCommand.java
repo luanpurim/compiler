@@ -2,7 +2,7 @@ package semantic;
 
 public enum MsilCommand {
 
-    SUM("sum"),
+    SUM("add"),
     SUB("sub"),
     DIV("div"),
     MUL("mul"),
