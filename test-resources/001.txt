@@ -1,4 +1,4 @@
 number: _a, _b
 {
-    _a + _b
+    write(_a + _b)
 }

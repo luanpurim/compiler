@@ -11,7 +11,7 @@
 ldloc _a
 ldloc _b
 add
-call void [mscorlib] System.Console::Write(float64)
+call void [mscorlib] System.Console:Write(float64)
 ret
 }
 }

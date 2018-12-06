@@ -26,7 +26,7 @@ public enum MsilCommand {
     JUMP("br %s"),
     READ_LINE("call string [mscorlib] System.Console::ReadLine()"),
     PARSE_STRING("call %s [mscorlib] System.%s::Parse(string)"),
-    WRITE_LINE("call void [mscorlib] System.Console:Write(%s)"),
+    WRITE_LINE("call void [mscorlib] System.Console::Write(%s)"),
     PROGRAM_TAIL("ret\n"
 		+ "}\n"
 		+ "}"),
