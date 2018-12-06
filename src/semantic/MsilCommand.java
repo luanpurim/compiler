@@ -10,7 +10,7 @@ public enum MsilCommand {
     OR("or"),
     PUSH_NUMBER("ldc.r8 %s"),
     PUSH_INTEGER("ldc.i8 %s"),
-    PUSH_LITERAL("ldstr \"%s\""),
+    PUSH_LITERAL("ldstr %s"),
     PUSH_LOGICAL("ldc.i4.%s"),
     CONVERT_TO_NUMBER("conv.r8"),
     XOR("xor"),
@@ -24,9 +24,9 @@ public enum MsilCommand {
     JUMP_TRUE("brtrue %s"),
     JUMP_FALSE("brfalse %s"),
     JUMP("br %s"),
-    READ_LINE("call string [mscorlib]System.Console::ReadLine()"),
-    PARSE_STRING("call %s [mscorlib]System.%s::Parse(string)"),
-    WRITE_LINE("call void [mscorlib] System.Console:Write(%s)"),
+    READ_LINE("call string [mscorlib] System.Console::ReadLine()"),
+    PARSE_STRING("call %s [mscorlib] System.%s::Parse(string)"),
+    WRITE_LINE("call void [mscorlib] System.Console::Write(%s)"),
     PROGRAM_TAIL(" \t ret \n"
 		+ "\t }"
 		+ "}"),
