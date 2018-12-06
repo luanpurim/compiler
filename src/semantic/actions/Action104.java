@@ -18,7 +18,7 @@ public class Action104 implements SemanticActionHandler {
         for (String identifier : context.getIdentifiersList()) {
             VarType varType = context.getSymbolTable().get(identifier);
             if (varType == null) {
-                throw new SemanticError(String.format("Variável '%s' não declarada", identifier));
+                throw new SemanticError(String.format("Identificador '%s' não declarado", identifier));
             }
             context.getCode().add(MsilCommand.READ_LINE);
             if (needConvertion(varType)) {

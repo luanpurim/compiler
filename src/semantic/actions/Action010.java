@@ -19,7 +19,7 @@ public class Action010 implements SemanticActionHandler{
 		VarType t1 = context.getTypeQueue().poll();
 		VarType t2 = context.getTypeQueue().poll();
 		if(t1 != t2) {
-			throw new SemanticError("Mensagem de erro de relacional");
+			throw new SemanticError("Tipos incompatíveis em operação relacional");
 		} 
 		context.getTypeQueue().add(VarType.LOGICAL);
 		switch ((String) context.getVariables().get(Variable.RELATIONAL_OPERATOR)) {

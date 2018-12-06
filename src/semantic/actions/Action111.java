@@ -4,6 +4,7 @@ import gals.SemanticError;
 import gals.Token;
 import semantic.Context;
 import semantic.MsilCommand;
+import semantic.VarType;
 
 public class Action111 implements SemanticActionHandler {
 
@@ -14,6 +15,10 @@ public class Action111 implements SemanticActionHandler {
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
+        VarType type = context.getTypeQueue().poll();
+        if (type != VarType.LOGICAL) {
+            throw new SemanticError("Tipo não é um booleano");
+        }
         String label = context.getLabelManager().pushNew();
         context.getCode().add(MsilCommand.JUMP_TRUE, label);
     }

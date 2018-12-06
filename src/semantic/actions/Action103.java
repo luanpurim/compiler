@@ -15,13 +15,13 @@ public class Action103 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {		
-		for(int i = 0; i <= context.getIdentifiersList().size(); i++ ) {
+		for(int i = 0; i < context.getIdentifiersList().size(); i++ ) {
 			String id = context.getIdentifiersList().get(i);
 			if(context.getSymbolTable().containsKey(id)) {
-				throw new SemanticError("Simbolo já existe na tabela de simbolos");
+				throw new SemanticError(String.format("Identificador '%s' já declarado", id));
 			}
-			context.getSymbolTable().put(token.getLexeme(), context.getVariables().get(Variable.TYPE_DECLARATION));
-			context.getCode().add(MsilCommand.LOCALS, context.getVariables().get(Variable.TYPE_DECLARATION), token.getLexeme());
+			context.getSymbolTable().put(id, context.getVariables().get(Variable.VAR_TYPE));
+			context.getCode().add(MsilCommand.LOCALS, context.getVariables().get(Variable.VAR_TYPE), token.getLexeme());
 			
 		}
 		context.getIdentifiersList().clear();
