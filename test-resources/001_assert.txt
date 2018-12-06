@@ -1,0 +1,17 @@
+.assembly extern mscorlib {}
+.assembly _codigo_objeto{}
+.module _codigo_objeto.exe
+
+.class public _UNICA{
+.method static public void _PRINCIPAL() {
+.entrypoint
+
+.locals(float64 _a)
+.locals(float64 _b)
+ldloc _a
+ldloc _b
+add
+call void [mscorlib] System.Console:Write(float64)
+ret
+}
+}
