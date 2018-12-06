@@ -1,5 +1,6 @@
 package semantic;
 
+import core.AnalyseErrorMessage;
 import core.AnalysisErrorResolver;
 import gals.AnalysisError;
 
@@ -10,8 +11,8 @@ public class SemanticErrorResolver extends AnalysisErrorResolver {
     }
 
     @Override
-    public String resolve() {
-        return "Erro semântico";
+    public AnalyseErrorMessage resolve() {
+        return new AnalyseErrorMessage("Erro semântico");
     }
 
 }

@@ -19,5 +19,10 @@ public class Semantico implements Constants
         } else {
             System.out.println(String.format("Ação %s não implementada. Token: %s", action, token));
         }
-    }	
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
 }

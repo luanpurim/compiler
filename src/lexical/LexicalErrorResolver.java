@@ -1,5 +1,6 @@
 package lexical;
 
+import core.AnalyseErrorMessage;
 import core.AnalysisErrorResolver;
 import core.WordExtractor;
 import gals.LexicalError;
@@ -24,13 +25,13 @@ public final class LexicalErrorResolver extends AnalysisErrorResolver {
     }
 
     @Override
-    public String resolve() {
+    public AnalyseErrorMessage resolve() {
         String message = error.getLocalizedMessage();
         if (DETAILED_MESSAGES.contains(message)) {
             String unknownToken = new WordExtractor().extract(code, error.getPosition());
-            return String.format("Erro na linha %d - %s %s", getLine(), unknownToken, message);
+            return new AnalyseErrorMessage(String.format("Erro na linha %d - %s %s", getLine(), unknownToken, message));
         }
-        return String.format("Erro na linha %d - %s", getLine(),  message);
+        return new AnalyseErrorMessage(String.format("Erro na linha %d - %s", getLine(),  message));
     }
 
 }

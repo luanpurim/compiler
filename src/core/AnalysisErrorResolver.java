@@ -29,6 +29,6 @@ public abstract class AnalysisErrorResolver {
         return line;
     }
 
-    public abstract String resolve();
+    public abstract AnalyseErrorMessage resolve();
 
 }

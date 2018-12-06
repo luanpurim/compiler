@@ -1,5 +1,6 @@
 package syntatic;
 
+import core.AnalyseErrorMessage;
 import core.AnalysisErrorResolver;
 import gals.SyntaticError;
 
@@ -13,9 +14,9 @@ public final class SyntaticErrorResolver extends AnalysisErrorResolver {
     }
 
     @Override
-    public String resolve() {
+    public AnalyseErrorMessage resolve() {
         String tokenType = new TokenTypeTranslator().translate(error.getToken());
-        return String.format("Erro na linha %d - encontrado %s %s", getLine(), tokenType, error.getMessage());
+        return new AnalyseErrorMessage(String.format("Erro na linha %d - encontrado %s %s", getLine(), tokenType, error.getMessage()));
     }
 
 }

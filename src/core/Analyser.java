@@ -9,32 +9,25 @@ import java.util.Optional;
 
 public class Analyser {
 
-    public Optional<AnalyseErrorMessage> analyse(String code) {
-        return Optional.ofNullable(analyseCode(code))
-                .map(AnalysisErrorResolver::resolve)
-                .map(AnalyseErrorMessage::new);
-    }
-
-    private AnalysisErrorResolver analyseCode(String code) {
+    public AnalyseResult analyse(String code) {
         try {
-            doAnalysis(code);
+            return new AnalyseResult(doAnalysis(code.replaceAll("\\r", "")));
         } catch (LexicalError lexicalError) {
-            return new LexicalErrorResolver(code, lexicalError);
+            return new AnalyseResult(new LexicalErrorResolver(code, lexicalError).resolve());
         } catch (SyntaticError syntaticError) {
-            return new SyntaticErrorResolver(code, syntaticError);
+            return new AnalyseResult(new SyntaticErrorResolver(code, syntaticError).resolve());
         } catch (SemanticError semanticError) {
-            return new SemanticErrorResolver(code, semanticError);
+            return new AnalyseResult(new SemanticErrorResolver(code, semanticError).resolve());
         }
-        return null;
     }
 
-    private void doAnalysis(String code) throws LexicalError, SemanticError, SyntaticError {
+    private String doAnalysis(String code) throws LexicalError, SemanticError, SyntaticError {
         Lexico lexical = new Lexico(code);
         Sintatico syntatic = new Sintatico();
         Semantico semantic = new Semantico();
-
         try {
             syntatic.parse(lexical, semantic);
+            return semantic.getContext().getCode().get();
         } catch (SyntaticError syntaticError) {
             if (syntaticError.getToken().getId() == Constants.t_reservada) {
                 throw new LexicalError("palavra reservada inválida", syntaticError.getPosition());
