@@ -21,7 +21,7 @@ public class Action001 implements SemanticActionHandler {
             throw new SemanticError("Tipos incompatíveis em operação aritmética binária");
         }
         context.getTypeQueue().add(VarType.NUMBER);
-        context.getCode().add(MsilCommand.SUM);
+        context.getCode().add(MsilCommand.ADD);
     }
 
 }
