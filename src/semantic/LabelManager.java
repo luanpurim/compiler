@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class LabelManager {
 
-    private Queue<String> labelQueue = new LinkedList<>();
+    private LinkedList<String> labelQueue = new LinkedList<>();
     private int count = 0;
 
     public String pushNew() {
@@ -14,8 +14,8 @@ public class LabelManager {
         return newLabel;
     }
 
-    public String poll() {
-        return labelQueue.poll();
+    public String pop() {
+        return labelQueue.removeLast();
     }
 
     private String generate() {

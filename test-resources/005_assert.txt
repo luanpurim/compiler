@@ -28,14 +28,14 @@ call void [mscorlib] System.Console::Write(float64)
 ldstr "Menor do que 10"
 call void [mscorlib] System.Console::Write(string)
 br label_4
-label_1:
+label_3:
 ldloc _a
 call void [mscorlib] System.Console::Write(float64)
 ldstr "Maior ou igual a 10"
 call void [mscorlib] System.Console::Write(string)
-label_2:
-br label_3
 label_4:
+br label_1
+label_2:
 ret
 }
 }

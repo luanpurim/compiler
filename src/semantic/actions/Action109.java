@@ -14,7 +14,7 @@ public class Action109 implements SemanticActionHandler {
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
-        String falseCodeLabel = context.getLabelManager().poll();
+        String falseCodeLabel = context.getLabelManager().pop();
         String trueCodeLabel = context.getLabelManager().pushNew();
         context.getCode().add(MsilCommand.JUMP, trueCodeLabel);
         context.getCode().add(MsilCommand.ADD_LABEL, falseCodeLabel);

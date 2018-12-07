@@ -1,14 +1,14 @@
 number: _a
-{
- read(_a)
- do {
-    _a := _a + 1
-    if (_a = 20) exit
-    (_a < 10)
-    ifTrueDo {
-     write(_a, "Menor do que 10")
-    } ifFalseDo {
-     write(_a, "Maior ou igual a 10")
-    }
+ {
+  read(_a)
+  do {
+     _a := _a + 1
+     if (_a = 20) exit
+     (_a < 10)
+     ifTrueDo {
+      write(_a, "Menor do que 10")
+     } ifFalseDo {
+      write(_a, "Maior ou igual a 10")
+     }
+  }
  }
-}
