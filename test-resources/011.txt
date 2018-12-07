@@ -1,0 +1,5 @@
+literal: _a
+number: _b
+{
+    write(_a * _b)
+}

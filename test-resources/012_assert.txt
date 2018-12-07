@@ -1,0 +1,34 @@
+.assembly extern mscorlib {}
+.assembly _codigo_objeto{}
+.module _codigo_objeto.exe
+
+.class public _UNICA{
+.method static public void _PRINCIPAL() {
+.entrypoint
+
+.locals(float64 _a)
+.locals(float64 _b)
+.locals(float64 _c)
+.locals(float64 _d)
+ldc.r8 10
+stloc _a
+ldc.r8 15
+stloc _b
+ldc.r8 12
+stloc _c
+ldc.r8 5
+ldc.i8 -1
+conv.r8
+mul
+stloc _d
+ldloc _a
+ldloc _b
+mul
+ldloc _c
+ldloc _d
+sub
+div
+call void [mscorlib] System.Console::Write(float64)
+ret
+}
+}

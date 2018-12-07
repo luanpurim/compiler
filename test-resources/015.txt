@@ -1,0 +1,4 @@
+logical: _a
+{
+    _a := "bla"
+}

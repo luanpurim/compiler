@@ -1,0 +1,9 @@
+number: _a, _b, _c
+logical:  _d
+{
+    _a := 10
+    _b := 15
+    _c := 12
+    _d := true
+    write((_a * _b) / (_c - _d))
+}

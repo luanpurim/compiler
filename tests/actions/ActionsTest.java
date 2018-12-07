@@ -87,4 +87,52 @@ public class ActionsTest {
         Assert.assertEquals("Erro na linha 4 - Tipo não é um booleano", result.getError().getMessage());
     }
 
+    @Test
+    public void testCode011() {
+        String code = CodeTestLoader.loadCode("011");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertTrue(result.hasError());
+        Assert.assertEquals("Erro na linha 4 - Tipos incompatíveis em operação aritmética binária", result.getError().getMessage());
+    }
+
+    @Test
+    public void testCode012() {
+        String code = CodeTestLoader.loadCode("012");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertFalse(result.hasError());
+        Assert.assertEquals(CodeTestLoader.loadCode("012_assert"), result.getCode());
+    }
+
+    @Test
+    public void testCode013() {
+        String code = CodeTestLoader.loadCode("013");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertTrue(result.hasError());
+        Assert.assertEquals("Erro na linha 8 - Tipos incompatíveis em operação aritmética binária", result.getError().getMessage());
+    }
+
+    @Test
+    public void testCode014() {
+        String code = CodeTestLoader.loadCode("014");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertTrue(result.hasError());
+        Assert.assertEquals("Erro na linha 3 - Tipo incompatível em comando de atribuição", result.getError().getMessage());
+    }
+
+    @Test
+    public void testCode015() {
+        String code = CodeTestLoader.loadCode("015");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertTrue(result.hasError());
+        Assert.assertEquals("Erro na linha 3 - Tipo incompatível em comando de atribuição", result.getError().getMessage());
+    }
+
+    @Test
+    public void testCode016() {
+        String code = CodeTestLoader.loadCode("016");
+        AnalyseResult result = new Analyser().analyse(code);
+        Assert.assertTrue(result.hasError());
+        Assert.assertEquals("Erro na linha 3 - Tipo incompatível em comando de atribuição", result.getError().getMessage());
+    }
+
 }
