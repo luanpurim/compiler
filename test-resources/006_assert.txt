@@ -1,0 +1,35 @@
+.assembly extern mscorlib {}
+.assembly _codigo_objeto{}
+.module _codigo_objeto.exe
+
+.class public _UNICA{
+.method static public void _PRINCIPAL() {
+.entrypoint
+
+.locals(bool _x)
+.locals(float64 _y)
+.locals(string _z)
+call string [mscorlib] System.Console::ReadLine()
+call bool [mscorlib] System.Boolean::Parse(string)
+stloc _x
+call string [mscorlib] System.Console::ReadLine()
+call float64 [mscorlib] System.Double::Parse(string)
+stloc _y
+call string [mscorlib] System.Console::ReadLine()
+stloc _z
+ldstr "log? "
+call void [mscorlib] System.Console::Write(string)
+ldloc _x
+call void [mscorlib] System.Console::Write(bool)
+ldloc _x
+brfalse label_1
+ldloc _y
+call void [mscorlib] System.Console::Write(float64)
+br label_2
+label_1:
+ldloc _z
+call void [mscorlib] System.Console::Write(string)
+label_2:
+ret
+}
+}

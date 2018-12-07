@@ -3,9 +3,9 @@ package gals;
 public class SemanticError extends AnalysisError
 {
 
-    public SemanticError(String msg)
+    public SemanticError(String msg, Token token)
     {
-        super(msg);
+        super(msg, token.getPosition());
     }
 
 }

@@ -15,7 +15,7 @@ public class Action101 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		context.getVariables().set(Variable.VAR_TYPE, VarType.NUMBER);
+		context.getVariables().set(Variable.VAR_TYPE, VarType.getByDeclaration(token.getLexeme()));
 	}
 
 }

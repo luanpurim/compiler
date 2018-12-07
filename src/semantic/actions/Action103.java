@@ -19,7 +19,7 @@ public class Action103 implements SemanticActionHandler{
 		for (int i = 0; i < context.getIdentifiersList().size(); i++ ) {
 			String id = context.getIdentifiersList().get(i);
 			if (context.getSymbolTable().containsKey(id)) {
-				throw new SemanticError(String.format("Identificador '%s' já declarado", id));
+				throw new SemanticError(String.format("Identificador '%s' já declarado", id), token);
 			}
 			context.getSymbolTable().put(id, context.getVariables().get(Variable.VAR_TYPE));
 			VarType type = context.getVariables().get(Variable.VAR_TYPE);

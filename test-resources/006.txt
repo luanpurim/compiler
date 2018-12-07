@@ -1,0 +1,15 @@
+logical: _x
+number: _y
+literal: _z
+{
+    read(_x)
+    read(_y)
+    read(_z)
+    write("log? ", _x)
+    (_x)
+    ifTrueDo {
+        write(_y)
+    } ifFalseDo {
+        write(_z)
+    }
+}

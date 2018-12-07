@@ -1,0 +1,30 @@
+.assembly extern mscorlib {}
+.assembly _codigo_objeto{}
+.module _codigo_objeto.exe
+
+.class public _UNICA{
+.method static public void _PRINCIPAL() {
+.entrypoint
+
+.locals(float64 _lado)
+label_1:
+ldstr "digite um valor para lado: "
+call void [mscorlib] System.Console::Write(string)
+call string [mscorlib] System.Console::ReadLine()
+call float64 [mscorlib] System.Double::Parse(string)
+stloc _lado
+ldloc _lado
+ldc.r8 0
+cgt
+brtrue label_2
+ldstr "valor inválido - "
+call void [mscorlib] System.Console::Write(string)
+br label_1
+label_2:
+ldloc _lado
+ldloc _lado
+mul
+call void [mscorlib] System.Console::Write(float64)
+ret
+}
+}

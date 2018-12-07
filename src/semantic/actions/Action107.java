@@ -17,7 +17,7 @@ public class Action107 implements SemanticActionHandler {
     public void handle(Token token, Context context) throws SemanticError {
         VarType type = context.getTypeQueue().poll();
         if (type != VarType.LOGICAL) {
-            throw new SemanticError("Tipo não é um booleano");
+            throw new SemanticError("Tipo não é um booleano", token);
         }
         String label = context.getLabelManager().pushNew();
         context.getCode().add(MsilCommand.JUMP_FALSE, label);

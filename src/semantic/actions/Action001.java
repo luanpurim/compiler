@@ -18,7 +18,7 @@ public class Action001 implements SemanticActionHandler {
         VarType type1 = context.getTypeQueue().poll();
         VarType type2 = context.getTypeQueue().poll();
         if (type1 != VarType.NUMBER || type2 != VarType.NUMBER) {
-            throw new SemanticError("Tipos incompatíveis em operação aritmética binária");
+            throw new SemanticError("Tipos incompatíveis em operação aritmética binária", token);
         }
         context.getTypeQueue().add(VarType.NUMBER);
         context.getCode().add(MsilCommand.ADD);

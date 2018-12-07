@@ -6,16 +6,36 @@
 .method static public void _PRINCIPAL() {
 .entrypoint
 
-ldc.r8 3
+.locals(float64 _a)
+call string [mscorlib] System.Console::ReadLine()
+call float64 [mscorlib] System.Double::Parse(string)
+stloc _a
+label_1:
+ldloc _a
+ldc.r8 1
+add
+stloc _a
+ldloc _a
+ldc.r8 20
+ceq
+brtrue label_2
+ldloc _a
+ldc.r8 10
+clt
+brfalse label_3
+ldloc _a
 call void [mscorlib] System.Console::Write(float64)
-ldstr " "
+ldstr "Menor do que 10"
 call void [mscorlib] System.Console::Write(string)
-ldc.r8 1.5
+br label_4
+label_1:
+ldloc _a
 call void [mscorlib] System.Console::Write(float64)
-ldstr "\t"
+ldstr "Maior ou igual a 10"
 call void [mscorlib] System.Console::Write(string)
-ldstr " ---> oi mundo!"
-call void [mscorlib] System.Console::Write(string)
+label_2:
+br label_3
+label_4:
 ret
 }
 }

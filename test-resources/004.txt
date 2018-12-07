@@ -1,0 +1,10 @@
+number: _lado
+{
+ do {
+ write("digite um valor para lado: ")
+ read (_lado)
+ if (_lado > 0) exit
+ write("valor inválido - ")
+ }
+ write(_lado*_lado)
+}

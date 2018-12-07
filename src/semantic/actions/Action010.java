@@ -19,7 +19,7 @@ public class Action010 implements SemanticActionHandler{
 		VarType t1 = context.getTypeQueue().poll();
 		VarType t2 = context.getTypeQueue().poll();
 		if(t1 != t2) {
-			throw new SemanticError("Tipos incompatíveis em operação relacional");
+			throw new SemanticError("Tipos incompatíveis em operação relacional", token);
 		} 
 		context.getTypeQueue().add(VarType.LOGICAL);
 		switch ((String) context.getVariables().get(Variable.RELATIONAL_OPERATOR)) {
@@ -33,7 +33,7 @@ public class Action010 implements SemanticActionHandler{
 			context.getCode().add(MsilCommand.EQUALS);
 			break;
 		default:
-			throw new SemanticError("Operador não encontrado");
+			throw new SemanticError("Operador não encontrado", token);
 		}
 	}
 

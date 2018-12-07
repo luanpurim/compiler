@@ -1,0 +1,11 @@
+number: _lado, _area
+{
+ read (_lado)
+ (_lado > 0) ifTrueDo {
+ _area:= _lado * _lado
+ } ifFalseDo {
+ write("erro: valor inválido para lado - ")
+ _area:= 0.0
+ }
+ write("área: ", _area)
+}

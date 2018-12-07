@@ -19,7 +19,7 @@ public class Action017 implements SemanticActionHandler{
 		VarType t2 = context.getTypeQueue().poll();
 		
 		if(t1 != VarType.LOGICAL || t2 != VarType.LOGICAL) {
-			throw new SemanticError("Tipos incompatíveis em operação lógica binária");
+			throw new SemanticError("Tipos incompatíveis em operação lógica binária", token);
 		}
 		
 		context.getTypeQueue().add(VarType.LOGICAL);
