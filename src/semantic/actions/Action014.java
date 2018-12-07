@@ -15,7 +15,7 @@ public class Action014 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		VarType type = context.getTypeQueue().poll();
+		VarType type = context.getTypeStack().removeLast();
 		context.getCode().add(MsilCommand.WRITE_LINE, type.msilType());
 	}
 

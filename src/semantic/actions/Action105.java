@@ -20,7 +20,7 @@ public class Action105 implements SemanticActionHandler{
 			throw new SemanticError(String.format("Identificador '%s' não declarado", id), token);
 		}
 		VarType tipo = context.getSymbolTable().get(id);
-		context.getTypeQueue().add(tipo);
+		context.getTypeStack().add(tipo);
 		context.getCode().add(MsilCommand.READ_VAR, id);
 	}
 	

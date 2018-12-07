@@ -15,12 +15,12 @@ public class Action001 implements SemanticActionHandler {
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
-        VarType type1 = context.getTypeQueue().poll();
-        VarType type2 = context.getTypeQueue().poll();
+        VarType type1 = context.getTypeStack().removeLast();
+        VarType type2 = context.getTypeStack().removeLast();
         if (type1 != VarType.NUMBER || type2 != VarType.NUMBER) {
             throw new SemanticError("Tipos incompatíveis em operação aritmética binária", token);
         }
-        context.getTypeQueue().add(VarType.NUMBER);
+        context.getTypeStack().add(VarType.NUMBER);
         context.getCode().add(MsilCommand.ADD);
     }
 

@@ -15,7 +15,7 @@ public class Action012 implements SemanticActionHandler {
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
-        context.getTypeQueue().add(VarType.LOGICAL);
+        context.getTypeStack().add(VarType.LOGICAL);
         context.getCode().add(MsilCommand.PUSH_LOGICAL, 0);
     }
 

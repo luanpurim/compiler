@@ -16,12 +16,12 @@ public class Action010 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		VarType t1 = context.getTypeQueue().poll();
-		VarType t2 = context.getTypeQueue().poll();
+		VarType t1 = context.getTypeStack().removeLast();
+		VarType t2 = context.getTypeStack().removeLast();
 		if(t1 != t2) {
 			throw new SemanticError("Tipos incompatíveis em operação relacional", token);
 		} 
-		context.getTypeQueue().add(VarType.LOGICAL);
+		context.getTypeStack().add(VarType.LOGICAL);
 		switch ((String) context.getVariables().get(Variable.RELATIONAL_OPERATOR)) {
 		case ">":
 			context.getCode().add(MsilCommand.GREATER_THAN);

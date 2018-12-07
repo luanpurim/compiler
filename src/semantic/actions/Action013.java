@@ -15,11 +15,11 @@ public class Action013 implements SemanticActionHandler {
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
-        VarType type = context.getTypeQueue().poll();
+        VarType type = context.getTypeStack().removeLast();
         if (type != VarType.LOGICAL) {
             throw new SemanticError("Tipo incompatível em operação lógica unária", token);
         }
-        context.getTypeQueue().add(VarType.LOGICAL);
+        context.getTypeStack().add(VarType.LOGICAL);
         context.getCode().add(MsilCommand.PUSH_LOGICAL, 1);
         context.getCode().add(MsilCommand.XOR);
     }

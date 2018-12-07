@@ -15,7 +15,7 @@ public class Action019 implements SemanticActionHandler{
 
 	@Override
 	public void handle(Token token, Context context) throws SemanticError {
-		context.getTypeQueue().add(VarType.LITERAL);
+		context.getTypeStack().add(VarType.LITERAL);
 		String lexeme = token.getLexeme()
 							.replace("\\s", " ")
 							.replaceAll("'", "\"");

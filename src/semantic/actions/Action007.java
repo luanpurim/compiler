@@ -14,11 +14,11 @@ public class Action007 implements SemanticActionHandler {
 
     @Override
     public void handle(Token token, Context context) throws SemanticError {
-        VarType type = context.getTypeQueue().poll();
+        VarType type = context.getTypeStack().removeLast();
         if (type != VarType.NUMBER) {
             throw new SemanticError("Tipo incompatível em operação aritmética unária", token);
         }
-        context.getTypeQueue().add(type);
+        context.getTypeStack().add(type);
     }
 
 }
