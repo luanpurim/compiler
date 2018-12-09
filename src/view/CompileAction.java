@@ -36,7 +36,6 @@ public class CompileAction implements Action {
     		} else {
     			createFile(result.getCode(), file);
     		}
-            System.out.println(result.getCode());
         }
     }
     

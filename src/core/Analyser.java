@@ -10,8 +10,9 @@ import java.util.Optional;
 public class Analyser {
 
     public AnalyseResult analyse(String code) {
+        code = code.replaceAll("\\r", "");
         try {
-            return new AnalyseResult(doAnalysis(code.replaceAll("\\r", "")));
+            return new AnalyseResult(doAnalysis(code));
         } catch (LexicalError lexicalError) {
             return new AnalyseResult(new LexicalErrorResolver(code, lexicalError).resolve());
         } catch (SyntaticError syntaticError) {
