@@ -33,7 +33,6 @@ public class OpenAction implements Action {
 				this.file = fileChooser.getSelectedFile();
 				FileReader fileReader = new FileReader(this.file);
 				this.editor.read(fileReader, null);
-				this.editor.setCaretPosition(this.editor.getText().length());
 				this.messages.setText("");
 				this.status.setText(this.file.getAbsolutePath());
 				Compiler.FILE = this.file;

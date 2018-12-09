@@ -32,6 +32,16 @@ public class Action010 implements SemanticActionHandler{
 		case "=":
 			context.getCode().add(MsilCommand.EQUALS);
 			break;
+		case ">=":
+			context.getCode().add(MsilCommand.GREATER_THAN);
+			context.getCode().add(MsilCommand.PUSH_LOGICAL, 0);
+			context.getCode().add(MsilCommand.EQUALS);
+			break;
+		case "<=":
+			context.getCode().add(MsilCommand.LESS_THAN);
+			context.getCode().add(MsilCommand.PUSH_LOGICAL, 0);
+			context.getCode().add(MsilCommand.EQUALS);
+			break;
 		default:
 			throw new SemanticError("Operador não encontrado", token);
 		}
